@@ -15,13 +15,13 @@ WebPy là một dự án web được xây dựng bằng Python sử dụng Flas
 
 ## Hướng dẫn cài đặt và chạy dự án
 
-1. **Cài đặt thư viện**
+1. **Cài đặt thư viện:**
    pip install -r requirements.txt
-2. **Khởi tạo database**
+2. **Khởi tạo database:**
    python manage.py db upgrade
-3. **Chạy ứng dụng**
+3. **Chạy ứng dụng:**
    python manage.py run
-4. **Truy cập**
+4. **Truy cập:**
    - Mở trình duyệt và vào địa chỉ: http://127.0.0.1:5000
 
 ## Đóng góp
