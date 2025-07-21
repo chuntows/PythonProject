@@ -5,14 +5,16 @@
   >
     <div class="text-center mb-8">
       <img
-        class="mx-auto h-14 w-14 rounded-full border-2 border-white shadow-lg"
-        src="https://placehold.co/56x56/000/fff?text=Py"
-        alt="PyMaster logo"
+        class="mx-auto h-14 w-14 rounded-full border-2 border-blue-400 shadow-lg"
+        src="https://placehold.co/56x56/000/fff?text=WP"
+        alt="WebPy logo"
       />
-      <h2 class="mt-6 text-3xl font-extrabold text-white tracking-tight">
-        Đăng nhập
+      <h2 class="mt-6 text-3xl font-extrabold text-pink-400 tracking-tight">
+        Đăng nhập WebPy
       </h2>
-      <!-- Đã chuyển link đăng ký xuống dưới -->
+      <p class="mt-2 text-zinc-400 text-sm italic">
+        Khám phá tri thức cùng AI và cộng đồng!
+      </p>
     </div>
     {% with messages = get_flashed_messages(with_categories=true) %} {% if
     messages %}
@@ -43,22 +45,12 @@
       <div class="space-y-5">
         <div>
           <label
-            for="{{ form.username.id }}"
+            for="{{ form.email.id }}"
             class="block text-sm font-medium text-zinc-200"
-            >Tên đăng nhập</label
-          >
-          {{ form.username(class="mt-1 block w-full px-3 py-2 bg-zinc-800 border
-          border-zinc-700 rounded-md text-white placeholder-zinc-500
-          focus:outline-none focus:ring-2 focus:ring-blue-500 sm:text-sm",
-          placeholder="Nhập tên đăng nhập") }} {% for error in
-          form.username.errors %} {% set error_vi = error %} {% if error ==
-          'This field is required.' %} {% set error_vi = 'Trường này là bắt
-          buộc.' %} {% endif %}
-          <span
-            class="inline-block px-4 py-2 rounded-lg text-xs font-semibold text-center mb-2"
-            style="background: #ef4444; color: #fff"
-            >{{ error_vi }}</span
-          >
+            >Email</label>
+          {{ form.email(class="mt-1 block w-full px-3 py-2 bg-zinc-800 border border-zinc-700 rounded-md text-white placeholder-zinc-500 focus:outline-none focus:ring-2 focus:ring-blue-500 sm:text-sm", placeholder="Nhập email") }}
+          {% for error in form.email.errors %} {% set error_vi = error %} {% if error == 'This field is required.' %} {% set error_vi = 'Trường này là bắt buộc.' %} {% endif %}
+          <span class="inline-block px-4 py-2 rounded-lg text-xs font-semibold text-center mb-2" style="background: #ef4444; color: #fff">{{ error_vi }}</span>
           {% endfor %}
         </div>
         <div>
@@ -86,21 +78,26 @@
           >
           {% endif %}
         </div>
-        <div class="flex items-center">
-          {{ form.remember(class="h-4 w-4 text-blue-500 focus:ring-blue-500
-          border-zinc-700 rounded") }}
-          <label
-            for="{{ form.remember.id }}"
-            class="ml-2 block text-sm text-zinc-300"
-            >Ghi nhớ đăng nhập</label
-          >
-        </div>
+        <!-- Đã xóa phần ghi nhớ đăng nhập -->
       </div>
       <div>
         <button
           type="submit"
-          class="w-full py-2 px-4 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-lg shadow-lg transition"
+          class="w-full py-2 px-4 bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500 hover:from-pink-600 hover:to-blue-600 text-white font-bold rounded-full shadow-xl text-base transition-all duration-200 flex items-center justify-center"
         >
+          <svg
+            class="w-5 h-5 mr-2"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M5 12h14M12 5l7 7-7 7"
+            />
+          </svg>
           Đăng nhập
         </button>
       </div>
@@ -116,3 +113,18 @@
   </div>
 </div>
 {% endblock %}
+<script>
+  function togglePassword() {
+    const pwd = document.getElementById("password-field");
+    const eye = document.getElementById("eye-icon");
+    if (pwd.type === "password") {
+      pwd.type = "text";
+      eye.innerHTML =
+        '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.875 18.825A10.05 10.05 0 0112 19c-5.523 0-10-4.477-10-10 0-1.657.336-3.234.938-4.675M15 12a3 3 0 11-6 0 3 3 0 016 0zm9 0c0-5.523-4.477-10-10-10s-10 4.477-10 10 4.477 10 10 10 10-4.477 10-10z" />';
+    } else {
+      pwd.type = "password";
+      eye.innerHTML =
+        '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0zm-9 0c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10S3 17.523 3 12z" />';
+    }
+  }
+</script>

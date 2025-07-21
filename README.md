@@ -30,4 +30,6 @@ Mọi đóng góp, báo lỗi hoặc ý tưởng mới đều được hoan ngh�
 
 ---
 
-**Tác giả:** chuntows
+**Tài Khoản Admin:**
+Email: admin@gmail.com
+Mật khẩu: admin

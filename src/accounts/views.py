@@ -29,6 +29,7 @@ def register():
 
             user = User(
                 username=form.username.data,
+                email=form.email.data,
                 password=hashed_pw,
                 role=form.role.data
             )
@@ -53,7 +54,7 @@ def login():
         return redirect(url_for(HOME_URL))
     form = LoginForm(request.form)
     if form.validate_on_submit():
-        user = User.query.filter_by(username=form.username.data).first()
+        user = User.query.filter_by(email=form.email.data).first()
         if user and bcrypt.check_password_hash(user.password, form.password.data):
             login_user(user)
             flash("Đăng nhập thành công!", "success")
@@ -64,7 +65,7 @@ def login():
             else:
                 return redirect(url_for(HOME_URL))
         else:
-            flash("Tên đăng nhập hoặc mật khẩu không đúng", "danger")
+            flash("Email hoặc mật khẩu không đúng", "danger")
     return render_template("accounts/login.html", form=form)
 
 @accounts_bp.route("/lecturer/dashboard")

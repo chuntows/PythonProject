@@ -13,23 +13,23 @@
         <div class="hidden md:ml-8 md:flex md:space-x-8">
           <a
             href="{{ url_for('core.home') }}"
-            class="border-primary text-white inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium"
+            class="border-transparent text-white inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium transition-all duration-200 hover:text-pink-400 hover:border-pink-400"
             >Trang chủ</a
           >
           <a
             href="{{ url_for('lessons.index') }}"
-            class="border-transparent text-zinc-400 hover:border-zinc-600 hover:text-white inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium"
-            >Khóa học</a
+            class="border-transparent text-zinc-400 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium transition-all duration-200 hover:text-pink-400 hover:border-pink-400"
+            >Hành trình học tập</a
           >
           <a
             href="{{ url_for('practice.practice') }}"
-            class="border-transparent text-zinc-400 hover:border-zinc-600 hover:text-white inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium"
-            >Thực hành</a
+            class="border-transparent text-zinc-400 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium transition-all duration-200 hover:text-purple-400 hover:border-purple-400"
+            >Luyện kỹ năng</a
           >
           <a
             href="{{ url_for('ai.ai_explain') }}"
-            class="border-transparent text-zinc-400 hover:border-zinc-600 hover:text-white inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium"
-            >AI Giải thích</a
+            class="border-transparent text-zinc-400 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium transition-all duration-200 hover:text-blue-400 hover:border-blue-400"
+            >Trợ lý AI</a
           >
         </div>
       </div>
@@ -57,20 +57,20 @@
 
         <a
           href="{{ url_for('accounts.logout') }}"
-          class="inline-flex items-center bg-red-700 hover:bg-red-800 text-white text-sm font-medium px-4 py-2 rounded-full shadow transition"
+          class="inline-flex items-center bg-gradient-to-r from-red-500 via-pink-500 to-purple-500 hover:from-red-600 hover:to-purple-600 text-white text-sm font-bold px-4 py-2 rounded-full shadow-xl transition-all duration-200"
         >
           Đăng xuất
         </a>
         {% else %}
         <a
           href="{{ url_for('accounts.login') }}"
-          class="inline-flex items-center border border-zinc-600 hover:border-blue-500 text-white hover:text-blue-400 text-sm font-medium px-4 py-2 rounded-full transition"
+          class="inline-flex items-center bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500 hover:from-pink-600 hover:to-blue-600 text-white text-sm font-bold px-4 py-2 rounded-full shadow-xl transition-all duration-200 mr-2"
         >
           Đăng nhập
         </a>
         <a
           href="{{ url_for('accounts.register') }}"
-          class="inline-flex items-center bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium px-4 py-2 rounded-full shadow transition"
+          class="inline-flex items-center bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 hover:from-blue-600 hover:to-pink-600 text-white text-sm font-bold px-4 py-2 rounded-full shadow-xl transition-all duration-200"
         >
           Đăng ký
         </a>

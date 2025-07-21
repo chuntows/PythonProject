@@ -2,7 +2,9 @@
 extends "base_lecturer.html" %} {% else %} {% extends "base.html" %} {% endif %}
 {% block title %}Bài học{% endblock %} {% block content %}
 <div class="max-w-4xl mx-auto px-4 py-12">
-  <h2 class="text-3xl font-extrabold text-white mb-10 flex items-center gap-3">
+  <h2
+    class="text-3xl font-extrabold text-pink-400 mb-10 flex items-center gap-3"
+  >
     <svg
       class="w-8 h-8 text-blue-500"
       fill="none"
@@ -21,18 +23,18 @@ extends "base_lecturer.html" %} {% else %} {% extends "base.html" %} {% endif %}
   <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
     {% for lesson in lessons %}
     <div
-      class="bg-zinc-900 rounded-2xl shadow-xl p-6 flex flex-col gap-4 card-hover border border-zinc-700"
+      class="bg-gradient-to-br from-zinc-900 via-zinc-800 to-black rounded-2xl shadow-2xl p-6 flex flex-col gap-4 card-hover border-2 border-purple-700 hover:border-pink-400 transition-all duration-200"
     >
       <div class="flex items-center gap-3">
         <div class="flex-shrink-0">
           <span
-            class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-blue-700 text-white text-lg font-bold"
+            class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500 text-white text-lg font-bold shadow-lg border-2 border-white"
           >
             {{ loop.index }}
           </span>
         </div>
         <div class="flex-1">
-          <div class="text-xl font-semibold text-white">{{ lesson.title }}</div>
+          <div class="text-xl font-bold text-blue-400">{{ lesson.title }}</div>
         </div>
         <!-- Chỉ hiển thị nút sửa/xóa cho giảng viên là người tạo -->
       </div>
@@ -41,7 +43,7 @@ extends "base_lecturer.html" %} {% else %} {% extends "base.html" %} {% endif %}
         and lesson.created_by == current_user.id %}
         <a
           href="{{ url_for('lessons.edit_lesson', lesson_id=lesson.id) }}"
-          class="px-4 py-2 rounded-lg bg-yellow-600 hover:bg-yellow-700 text-white font-bold shadow transition"
+          class="px-4 py-2 rounded-lg bg-gradient-to-r from-yellow-400 via-pink-400 to-purple-400 hover:from-yellow-500 hover:to-purple-500 text-black font-bold shadow-xl transition-all duration-200"
         >
           Sửa
         </a>
@@ -53,7 +55,7 @@ extends "base_lecturer.html" %} {% else %} {% extends "base.html" %} {% endif %}
           <button
             type="submit"
             onclick="return confirm('Bạn có chắc muốn xóa bài học này?');"
-            class="px-4 py-2 rounded-lg bg-red-600 hover:bg-red-700 text-white font-bold shadow transition"
+            class="px-4 py-2 rounded-lg bg-gradient-to-r from-red-500 via-pink-500 to-purple-500 hover:from-red-600 hover:to-purple-600 text-white font-bold shadow-xl transition-all duration-200"
           >
             Xóa
           </button>
@@ -63,7 +65,7 @@ extends "base_lecturer.html" %} {% else %} {% extends "base.html" %} {% endif %}
         <form method="POST" action="#">
           <button
             type="submit"
-            class="px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-bold shadow transition"
+            class="px-4 py-2 rounded-lg bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500 hover:from-pink-600 hover:to-blue-600 text-white font-bold shadow-xl transition-all duration-200"
           >
             Đăng ký bài học
           </button>

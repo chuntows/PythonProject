@@ -9,6 +9,9 @@ class RegisterForm(FlaskForm):
     username = StringField(
         "Username", validators=[DataRequired(), Length(min=6, max=40)]
     )
+    email = StringField(
+        "Email", validators=[DataRequired(), Length(min=6, max=120)]
+    )
     password = PasswordField(
         "Password", validators=[DataRequired(), Length(min=6, max=25)]
     )
@@ -33,14 +36,23 @@ class RegisterForm(FlaskForm):
         if user:
             self.username.errors.append("Username already registered")
             return False
+        email_user = User.query.filter_by(email=self.email.data).first()
+        if email_user:
+            self.email.errors.append("Email already registered")
+            return False
         if self.password.data != self.confirm.data:
             self.password.errors.append("Passwords must match")
+            return False
+        # Đơn giản: kiểm tra định dạng email
+        import re
+        if not re.match(r"[^@]+@[^@]+\.[^@]+", self.email.data):
+            self.email.errors.append("Email không hợp lệ")
             return False
         return True
 
 
 class LoginForm(FlaskForm):
-    username = StringField("Username", validators=[DataRequired()])
+    email = StringField("Email", validators=[DataRequired()])
     password = PasswordField("Password", validators=[DataRequired()])
     remember = BooleanField("Ghi nhớ đăng nhập")
 

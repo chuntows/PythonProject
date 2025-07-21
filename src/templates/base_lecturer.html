@@ -32,22 +32,22 @@
             <div class="ml-8 flex space-x-8">
               <a
                 href="{{ url_for('accounts.dashboard_lecturer') }}"
-                class="border-primary text-white inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium"
+                class="border-transparent text-white inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium transition-all duration-200 hover:text-pink-400 hover:border-pink-400"
                 >Trang chủ</a
               >
               <a
                 href="{{ url_for('lessons.add') }}"
-                class="border-transparent text-zinc-400 hover:border-zinc-600 hover:text-white inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium"
+                class="border-transparent text-zinc-400 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium transition-all duration-200 hover:text-pink-400 hover:border-pink-400"
                 >Thêm bài học</a
               >
               <a
                 href="{{ url_for('lessons.index') }}"
-                class="border-transparent text-zinc-400 hover:border-zinc-600 hover:text-white inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium"
+                class="border-transparent text-zinc-400 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium transition-all duration-200 hover:text-blue-400 hover:border-blue-400 hover:bg-gradient-to-r hover:from-pink-500 hover:via-purple-500 hover:to-blue-500 hover:bg-clip-text hover:text-transparent"
                 >Quản lý bài tập</a
               >
               <a
                 href="#"
-                class="border-transparent text-zinc-400 hover:border-zinc-600 hover:text-white inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium"
+                class="border-transparent text-zinc-400 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium transition-all duration-200 hover:text-blue-400 hover:border-blue-400"
                 >Báo cáo</a
               >
             </div>
@@ -55,7 +55,7 @@
           <div class="flex items-center space-x-3">
             <a
               href="{{ url_for('accounts.logout') }}"
-              class="inline-flex items-center bg-red-700 hover:bg-red-800 text-white text-sm font-medium px-4 py-2 rounded-full shadow transition"
+              class="inline-flex items-center bg-gradient-to-r from-red-500 via-pink-500 to-purple-500 hover:from-red-600 hover:to-purple-600 text-white text-sm font-bold px-4 py-2 rounded-full shadow-xl transition-all duration-200"
               >Đăng xuất</a
             >
           </div>
