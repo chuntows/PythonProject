@@ -1,0 +1,13 @@
+<!-- File đã được xóa nội dung vì không còn sử dụng cho 2FA -->
+
+{% block js %}
+<script>
+  function copySecret() {
+    const input = document.getElementById("secret");
+    input.select();
+    input.setSelectionRange(0, 99999); // For mobile
+    document.execCommand("copy");
+    alert("Đã sao chép mã bí mật thành công!");
+  }
+</script>
+{% endblock %}

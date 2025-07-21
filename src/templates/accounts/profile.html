@@ -1,0 +1,98 @@
+{% extends "base.html" %} {% block content %}
+<div class="max-w-2xl mx-auto px-4 py-14">
+  <h2 class="text-3xl font-extrabold text-white mb-10 flex items-center gap-3">
+    <svg class="w-8 h-8 text-blue-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5.121 17.804A13.937 13.937 0 0112 15c2.5 0 4.847.655 6.879 1.804M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+    Hồ sơ cá nhân
+  </h2>
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      <div class="mb-6">
+        {% for category, message in messages %}
+          <div class="px-4 py-3 rounded-xl mb-2 text-sm font-semibold
+            {% if category == 'success' %}bg-green-700 text-green-100{% elif category == 'error' %}bg-red-700 text-red-100{% else %}bg-zinc-800 text-white{% endif %}">
+            {{ message }}
+          </div>
+        {% endfor %}
+      </div>
+    {% endif %}
+  {% endwith %}
+  <form method="POST" action="" class="space-y-8" enctype="multipart/form-data">
+    {{ form.csrf_token }}
+    <div class="flex flex-col md:flex-row items-center gap-8 mb-8">
+      <!-- Avatar -->
+      <div class="flex flex-col items-center gap-3">
+        <div id="avatar-box" class="w-28 h-28 rounded-full border-4 flex items-center justify-center overflow-hidden text-4xl font-bold text-white select-none" style="background: #6366f1;">
+          {% if current_user.avatar_url %}
+            <img src="{{ current_user.avatar_url }}" alt="Avatar" class="object-cover w-full h-full" />
+          {% else %}
+            {% set display_name = (current_user.name or current_user.username or 'U') %}
+            {% set first_letter = display_name[0]|upper %}
+            <span id="avatar-initial">{{ first_letter }}</span>
+          {% endif %}
+        </div>
+        <label class="block relative cursor-pointer">
+          <span class="sr-only">Chọn ảnh đại diện</span>
+          <input type="file" name="avatar" accept="image/*" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer" />
+          <span class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-6 rounded-full transition">Chọn ảnh đại diện</span>
+        </label>
+      </div>
+      <!-- Thông tin cá nhân -->
+      <div class="flex-1 w-full">
+        <div class="mb-6">
+          <label class="block text-base font-semibold text-zinc-200 mb-2">Tên đăng nhập</label>
+          <input type="text" class="w-full border border-zinc-700 px-4 py-3 rounded-xl bg-zinc-900 text-white" value="{{ current_user.username }}" readonly />
+        </div>
+        <div>
+          <label class="block text-base font-semibold text-zinc-200 mb-2">Vai trò</label>
+          <input type="text" class="w-full border border-zinc-700 px-4 py-3 rounded-xl bg-zinc-900 text-white" value="{{ current_user.role }}" readonly />
+        </div>
+      </div>
+    </div>
+    <!-- Đã chuyển thông tin cá nhân lên cạnh avatar, bỏ phần lặp này -->
+    <div class="border-t border-zinc-700 pt-8">
+      <button type="button" id="show-change-password" class="text-lg font-bold text-white mb-4 px-0 py-0 bg-transparent hover:underline focus:outline-none">Đổi mật khẩu</button>
+      <div id="change-password-form" class="grid gap-5 mt-6 hidden">
+        <div>
+          {{ form.current_password.label(class="block text-sm font-medium text-zinc-200 mb-1") }}
+          {{ form.current_password(class="w-full border border-zinc-700 px-4 py-3 rounded-xl bg-zinc-900 text-white") }}
+        </div>
+        <div>
+          {{ form.new_password.label(class="block text-sm font-medium text-zinc-200 mb-1") }}
+          {{ form.new_password(class="w-full border border-zinc-700 px-4 py-3 rounded-xl bg-zinc-900 text-white") }}
+        </div>
+        <div>
+          {{ form.confirm_password.label(class="block text-sm font-medium text-zinc-200 mb-1") }}
+          {{ form.confirm_password(class="w-full border border-zinc-700 px-4 py-3 rounded-xl bg-zinc-900 text-white") }}
+        </div>
+      </div>
+    </div>
+    <!-- Nút lưu thay đổi ra ngoài, căn giữa -->
+    <div class="pt-8 flex justify-center">
+      <button type="submit" class="bg-green-600 hover:bg-green-700 text-white font-bold px-8 py-3 rounded-xl shadow-lg transition">
+        Lưu thay đổi
+      </button>
+    </div>
+  </form>
+    <script>
+      // Đổi màu nền avatar ngẫu nhiên nếu chưa có ảnh
+      document.addEventListener('DOMContentLoaded', function() {
+        var avatarBox = document.getElementById('avatar-box');
+        var avatarImg = avatarBox.querySelector('img');
+        if (!avatarImg) {
+          var colors = ['#6366f1', '#f59e42', '#10b981', '#ef4444', '#f472b6', '#facc15', '#0ea5e9', '#a3e635'];
+          var color = colors[Math.floor(Math.random() * colors.length)];
+          avatarBox.style.background = color;
+        }
+        // Hiện form đổi mật khẩu khi ấn nút
+        var btn = document.getElementById('show-change-password');
+        var form = document.getElementById('change-password-form');
+        if (btn && form) {
+          btn.addEventListener('click', function() {
+            form.classList.toggle('hidden');
+          });
+        }
+      });
+    </script>
+  </form>
+</div>
+{% endblock %}

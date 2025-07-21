@@ -1,0 +1,41 @@
+{% extends 'admin/base_admin.html' %}
+{% block content %}
+<div class="max-w-4xl mx-auto px-4 py-8">
+  <h2 class="text-2xl font-bold text-white mb-6">Danh sách người dùng</h2>
+  <table class="min-w-full bg-zinc-900 rounded-xl overflow-hidden">
+    <thead>
+      <tr class="bg-zinc-800 text-zinc-200">
+        <th class="py-2 px-4">ID</th>
+        <th class="py-2 px-4">Tên đăng nhập</th>
+        <th class="py-2 px-4">Quyền</th>
+        <th class="py-2 px-4">Hành động</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for user in users %}
+      <tr class="border-b border-zinc-700">
+        <td class="py-2 px-4">{{ user.id }}</td>
+        <td class="py-2 px-4">{{ user.username }}</td>
+        <td class="py-2 px-4">{{ user.role }}</td>
+        <td class="py-2 px-4 flex gap-2">
+          {# Đã ẩn nút sửa cho mọi user #}
+          <form method="POST" action="{{ url_for('admin.change_role', user_id=user.id) }}" class="inline">
+            <select name="role" class="bg-zinc-800 text-white rounded px-2 py-1">
+              <option value="sinhvien" {% if user.role == 'sinhvien' %}selected{% endif %}>Sinh viên</option>
+              <option value="giangvien" {% if user.role == 'giangvien' %}selected{% endif %}>Giảng viên</option>
+              <option value="admin" {% if user.role == 'admin' %}selected{% endif %}>Admin</option>
+            </select>
+            <button type="submit" class="ml-2 px-2 py-1 bg-blue-600 hover:bg-blue-700 text-white rounded">Lưu</button>
+          </form>
+          {% if user.role != 'admin' %}
+          <form method="POST" action="{{ url_for('admin.delete_user', user_id=user.id) }}" class="inline" onsubmit="return confirm('Bạn có chắc muốn xóa người dùng này?');">
+            <button type="submit" class="ml-2 px-2 py-1 bg-red-600 hover:bg-red-700 text-white rounded">Xóa</button>
+          </form>
+          {% endif %}
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

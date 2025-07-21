@@ -1,0 +1,167 @@
+/* ===============================
+   General
+================================ */
+body {
+  font-family: 'Fira Sans', sans-serif;
+  background-color: #f8f9fa;
+  color: #212529;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+  color: #007bff;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: #0056b3;
+  text-decoration: underline;
+}
+
+/* ===============================
+   Navbar Styling
+================================ */
+.navbar {
+  background-color: #1e1e2f;
+}
+
+.navbar-brand {
+  font-weight: bold;
+  font-size: 1.3rem;
+  color: #00e676 !important;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+  color: #ffffffcc;
+  transition: color 0.3s ease;
+}
+
+.navbar-dark .navbar-nav .nav-link:hover {
+  color: #00e5ff;
+}
+
+.navbar-text {
+  font-size: 0.95rem;
+}
+
+/* ===============================
+   Flash Message / Error
+================================ */
+.alert {
+  font-size: 0.95rem;
+}
+
+.error {
+  color: #dc3545;
+  font-weight: bold;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+/* ===============================
+   Form Styling
+================================ */
+.form-signin {
+  padding: 2rem;
+  border-radius: 10px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.form-floating label {
+  padding-left: 10px;
+  color: #6c757d;
+}
+
+.form-control {
+  border-radius: 8px;
+  font-size: 0.95rem;
+}
+
+/* ===============================
+   Buttons
+================================ */
+.btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+  border-color: #004a99;
+}
+
+.btn-outline-light:hover {
+  background-color: #00e5ff;
+  color: #000;
+  border-color: #00e5ff;
+}
+
+/* ===============================
+   Card / Content Styling
+================================ */
+.card {
+  border-radius: 12px;
+  border: none;
+}
+
+.card-title {
+  font-weight: 600;
+}
+
+/* ===============================
+   Progress Bar
+================================ */
+.progress {
+  height: 24px;
+  background-color: #dee2e6;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.progress-bar {
+  background-color: #28a745;
+  font-weight: 600;
+  line-height: 24px;
+}
+
+/* ===============================
+   QR Code & Copy Text
+================================ */
+#secret {
+  text-align: center;
+  font-weight: bold;
+  font-size: 1rem;
+  color: #333;
+}
+
+/* ===============================
+   Footer (nếu có)
+================================ */
+footer {
+  background-color: #1e1e2f;
+  color: #ccc;
+  padding: 1rem;
+  text-align: center;
+  font-size: 0.9rem;
+  margin-top: 2rem;
+}
+
+/* ===============================
+   Responsive Adjustments
+================================ */
+@media (max-width: 768px) {
+  .form-signin {
+    padding: 1rem;
+  }
+
+  .navbar-brand {
+    font-size: 1.1rem;
+  }
+
+  .navbar-text {
+    display: none;
+  }
+}

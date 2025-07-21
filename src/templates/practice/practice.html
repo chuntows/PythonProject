@@ -1,0 +1,121 @@
+{% extends "base.html" %} {% block content %}
+<div class="max-w-3xl mx-auto px-4 py-14">
+  <h2 class="text-3xl font-extrabold text-white mb-10 flex items-center gap-3">
+    <svg
+      class="w-8 h-8 text-blue-500"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      viewBox="0 0 24 24"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        d="M19.428 15.341A8 8 0 118 4.572"
+      />
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        d="M22 22l-5.2-5.2"
+      />
+    </svg>
+    Thực hành Python
+  </h2>
+  <form method="POST" class="space-y-8">
+    <div>
+      <label
+        for="code-editor"
+        class="block text-base font-semibold text-zinc-200 mb-3"
+        >Nhập mã Python của bạn:</label
+      >
+      <textarea id="code-editor" class="resize-y">{{ code }}</textarea>
+      <input type="hidden" name="code" id="hidden-code" />
+    </div>
+    <button
+      type="submit"
+      class="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white text-lg font-bold px-8 py-3 rounded-xl shadow-lg transition focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+    >
+      <svg
+        class="w-5 h-5"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        viewBox="0 0 24 24"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M5 12h14M12 5l7 7-7 7"
+        />
+      </svg>
+      Chạy mã
+    </button>
+  </form>
+  {% if output %}
+  <div class="mt-10">
+    <h3 class="text-xl font-semibold text-white mb-3 flex items-center gap-2">
+      <svg
+        class="w-6 h-6 text-green-400"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        viewBox="0 0 24 24"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M9 12l2 2l4-4"
+        />
+      </svg>
+      Kết quả thực thi
+    </h3>
+    <pre
+      class="bg-zinc-900 border border-zinc-700 p-5 rounded-xl text-base text-green-300 whitespace-pre-line"
+    >
+{{ output }}</pre
+    >
+  </div>
+  {% endif %}
+</div>
+{% endblock %} {% block js %}
+<!-- CodeMirror CSS & JS -->
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/codemirror@5.65.16/lib/codemirror.min.css"
+/>
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/codemirror@5.65.16/theme/dracula.min.css"
+/>
+<script src="https://cdn.jsdelivr.net/npm/codemirror@5.65.16/lib/codemirror.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/codemirror@5.65.16/mode/python/python.min.js"></script>
+
+<style>
+  /* Cho phép resize khung CodeMirror */
+  .CodeMirror {
+    resize: vertical;
+    overflow: auto;
+    min-height: 200px;
+    max-height: 600px;
+  }
+</style>
+
+<script>
+  const editor = CodeMirror.fromTextArea(
+    document.getElementById("code-editor"),
+    {
+      lineNumbers: true,
+      mode: "python",
+      theme: "dracula",
+      indentUnit: 4,
+      tabSize: 4,
+      lineWrapping: true,
+      viewportMargin: Infinity, // Cho phép mở rộng chiều cao không giới hạn ban đầu
+    }
+  );
+
+  document.querySelector("form").addEventListener("submit", function () {
+    document.getElementById("hidden-code").value = editor.getValue();
+  });
+</script>
+{% endblock %}

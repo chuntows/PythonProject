@@ -1,0 +1,75 @@
+{% extends "base.html" %} {% block content %}
+<div class="max-w-3xl mx-auto px-4 py-14">
+  <h2 class="text-3xl font-extrabold text-white mb-10 flex items-center gap-3">
+    <svg
+      class="w-8 h-8 text-blue-500"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      viewBox="0 0 24 24"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        d="M13 16h-1v-4h-1m4 4v-6a2 2 0 00-2-2H7a2 2 0 00-2 2v6"
+      />
+    </svg>
+    AI Giải thích
+  </h2>
+  <form method="POST" class="space-y-8">
+    <div>
+      <label for="code" class="block text-base font-semibold text-zinc-200 mb-3"
+        >Nhập mã Python:</label
+      >
+      <textarea
+        name="code"
+        id="code"
+        rows="10"
+        class="block w-full px-4 py-3 text-base font-mono border border-zinc-700 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-zinc-900 text-white resize-y"
+        required
+      >
+{{ code|default('') }}</textarea
+      >
+    </div>
+    <button
+      type="submit"
+      class="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white text-lg font-bold px-8 py-3 rounded-xl shadow-lg transition focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+    >
+      <svg
+        class="w-5 h-5"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        viewBox="0 0 24 24"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M5 12h14M12 5l7 7-7 7"
+        />
+      </svg>
+      Giải thích
+    </button>
+  </form>
+  {% if explanation %}
+  <hr class="my-10" />
+  <h3 class="text-lg font-semibold text-white mb-3 flex items-center gap-2">
+    <svg
+      class="w-5 h-5 text-green-400"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      viewBox="0 0 24 24"
+    >
+      <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2l4-4" />
+    </svg>
+    Kết quả
+  </h3>
+  <div
+    class="p-5 border border-blue-600 bg-zinc-900 text-base text-blue-200 rounded-xl whitespace-pre-line font-sans"
+  >
+    {{ explanation }}
+  </div>
+  {% endif %}
+</div>
+{% endblock %}

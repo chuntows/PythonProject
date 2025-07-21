@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Admin Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      input,
+      select,
+      textarea {
+        background-color: #111 !important;
+        color: #fff !important;
+        border: 1px solid #444 !important;
+      }
+      option {
+        background-color: #222 !important;
+        color: #fff !important;
+      }
+      input:focus,
+      select:focus,
+      textarea:focus {
+        outline: 2px solid #2563eb !important;
+        background-color: #18181b !important;
+        color: #fff !important;
+      }
+    </style>
+  </head>
+  <body class="bg-black text-white font-sans antialiased">
+    <div class="min-h-screen flex flex-col">
+      <header class="bg-zinc-900 text-white py-4 shadow">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+          <h1 class="text-2xl font-bold">Admin Dashboard</h1>
+          <a
+            href="/logout"
+            class="bg-red-600 hover:bg-red-700 px-4 py-2 rounded text-white font-semibold"
+            >Đăng xuất</a
+          >
+        </div>
+      </header>
+      <main class="flex-1 container mx-auto px-4 py-8 bg-black text-white">
+        {# Hiển thị flash message một lần duy nhất #} {% with messages =
+        get_flashed_messages(with_categories=true) %} {% if messages %}
+        <div class="max-w-2xl mx-auto">
+          {% for category, message in messages %}
+          <div
+            class="mb-4 p-4 rounded border-l-4 {% if category == 'danger' %} border-red-600 bg-black text-red-400 {% elif category == 'success' %} border-green-600 bg-black text-green-400 {% elif category == 'info' %} border-blue-600 bg-black text-blue-400 {% else %} border-zinc-700 bg-black text-white {% endif %}"
+          >
+            {{ message }}
+          </div>
+          {% endfor %}
+        </div>
+        {% endif %} {% endwith %} {% block content %}{% endblock %}
+      </main>
+    </div>
+  </body>
+</html>

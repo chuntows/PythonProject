@@ -1,0 +1,28 @@
+{% extends 'base.html' %} {% block content %}
+<div class="container mx-auto px-4 py-8">
+  <h1 class="text-2xl font-bold text-white mb-6">Danh sách bài học</h1>
+  {% if current_user.is_authenticated and current_user.role == 'giaovien' %}
+  <a
+    href="{{ url_for('lessons.add') }}"
+    class="mb-6 inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold px-4 py-2 rounded-lg shadow transition"
+    >+ Thêm bài học</a
+  >
+  {% endif %}
+  <div class="bg-zinc-900 rounded-xl p-6 shadow-lg">
+    <ul>
+      {% for lesson in lessons %}
+      <li
+        class="mb-4 flex items-center justify-between border-b border-zinc-800 pb-2"
+      >
+        <span class="text-lg text-white">{{ lesson.title }}</span>
+        <span class="text-xs px-2 py-1 rounded bg-zinc-700 text-zinc-200"
+          >{{ lesson.description or '' }}</span
+        >
+      </li>
+      {% else %}
+      <li class="text-zinc-400">Chưa có bài học nào.</li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
+{% endblock %}
