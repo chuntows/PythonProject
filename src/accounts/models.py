@@ -15,7 +15,6 @@ class User(UserMixin, db.Model):
     email = db.Column(db.String, unique=True, nullable=False)
     password = db.Column(db.String, nullable=False)
     created_at = db.Column(db.DateTime, nullable=False)
-    # Đã xóa xác thực 2 bước (2FA)
     role = db.Column(db.String(20), nullable=False, default='sinhvien')  # Các giá trị: 'sinhvien', 'giangvien', 'admin'
 
     def __init__(self, username, email, password, role):

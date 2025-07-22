@@ -47,10 +47,19 @@
           <label
             for="{{ form.email.id }}"
             class="block text-sm font-medium text-zinc-200"
-            >Email</label>
-          {{ form.email(class="mt-1 block w-full px-3 py-2 bg-zinc-800 border border-zinc-700 rounded-md text-white placeholder-zinc-500 focus:outline-none focus:ring-2 focus:ring-blue-500 sm:text-sm", placeholder="Nhập email") }}
-          {% for error in form.email.errors %} {% set error_vi = error %} {% if error == 'This field is required.' %} {% set error_vi = 'Trường này là bắt buộc.' %} {% endif %}
-          <span class="inline-block px-4 py-2 rounded-lg text-xs font-semibold text-center mb-2" style="background: #ef4444; color: #fff">{{ error_vi }}</span>
+            >Email</label
+          >
+          {{ form.email(class="mt-1 block w-full px-3 py-2 bg-zinc-800 border
+          border-zinc-700 rounded-md text-white placeholder-zinc-500
+          focus:outline-none focus:ring-2 focus:ring-blue-500 sm:text-sm",
+          placeholder="Nhập email") }} {% for error in form.email.errors %} {%
+          set error_vi = error %} {% if error == 'This field is required.' %} {%
+          set error_vi = 'Trường này là bắt buộc.' %} {% endif %}
+          <span
+            class="inline-block px-4 py-2 rounded-lg text-xs font-semibold text-center mb-2"
+            style="background: #ef4444; color: #fff"
+            >{{ error_vi }}</span
+          >
           {% endfor %}
         </div>
         <div>

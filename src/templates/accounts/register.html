@@ -25,12 +25,30 @@
           <label
             for="{{ form.username.id }}"
             class="block text-sm font-bold text-pink-400 drop-shadow mb-1"
-            >Tên đăng nhập</label>
+            >Tên đăng nhập</label
+          >
           <span class="absolute left-3 top-9 text-pink-400">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A13.937 13.937 0 0112 15c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-5 w-5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M5.121 17.804A13.937 13.937 0 0112 15c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0z"
+              />
+            </svg>
           </span>
-          {{ form.username(class="mt-1 block w-full pl-10 px-3 py-2 bg-zinc-900 border-2 border-transparent border-gradient-pink-blue rounded-md text-white placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-pink-500 sm:text-sm transition-all duration-200", placeholder="Nhập tên đăng nhập") }}
-          {% for error in form.username.errors %}
+          {{ form.username(class="mt-1 block w-full pl-10 px-3 py-2 bg-zinc-900
+          border-2 border-transparent border-gradient-pink-blue rounded-md
+          text-white placeholder-zinc-400 focus:outline-none focus:ring-2
+          focus:ring-pink-500 focus:border-pink-500 sm:text-sm transition-all
+          duration-200", placeholder="Nhập tên đăng nhập") }} {% for error in
+          form.username.errors %}
           <p class="text-pink-400 text-xs mt-1">{{ error }}</p>
           {% endfor %}
         </div>
@@ -38,12 +56,30 @@
           <label
             for="{{ form.email.id }}"
             class="block text-sm font-bold text-blue-400 drop-shadow mb-1"
-            >Email</label>
+            >Email</label
+          >
           <span class="absolute left-3 top-9 text-blue-400">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 12H8m8 0a4 4 0 11-8 0 4 4 0 018 0zm0 0v1a4 4 0 01-8 0v-1" /></svg>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-5 w-5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M16 12H8m8 0a4 4 0 11-8 0 4 4 0 018 0zm0 0v1a4 4 0 01-8 0v-1"
+              />
+            </svg>
           </span>
-          {{ form.email(class="mt-1 block w-full pl-10 px-3 py-2 bg-zinc-900 border-2 border-transparent border-gradient-pink-blue rounded-md text-white placeholder-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-blue-400 sm:text-sm transition-all duration-200", placeholder="Nhập email") }}
-          {% for error in form.email.errors %}
+          {{ form.email(class="mt-1 block w-full pl-10 px-3 py-2 bg-zinc-900
+          border-2 border-transparent border-gradient-pink-blue rounded-md
+          text-white placeholder-blue-300 focus:outline-none focus:ring-2
+          focus:ring-blue-400 focus:border-blue-400 sm:text-sm transition-all
+          duration-200", placeholder="Nhập email") }} {% for error in
+          form.email.errors %}
           <p class="text-blue-400 text-xs mt-1">{{ error }}</p>
           {% endfor %}
         </div>
@@ -51,7 +87,8 @@
           <label
             for="{{ form.password.id }}"
             class="block text-sm font-bold text-purple-400 drop-shadow mb-1"
-            >Mật khẩu</label>
+            >Mật khẩu</label
+          >
           <span class="absolute left-3 top-9 text-purple-400">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -68,7 +105,12 @@
               />
             </svg>
           </span>
-          {{ form.password(class="mt-1 block w-full pl-10 px-3 py-2 bg-zinc-900 border-2 border-transparent border-gradient-pink-blue rounded-md text-white placeholder-purple-300 focus:outline-none focus:ring-2 focus:ring-purple-400 focus:border-purple-400 sm:text-sm transition-all duration-200", placeholder="Nhập mật khẩu") }} {% for error in form.password.errors %}
+          {{ form.password(class="mt-1 block w-full pl-10 px-3 py-2 bg-zinc-900
+          border-2 border-transparent border-gradient-pink-blue rounded-md
+          text-white placeholder-purple-300 focus:outline-none focus:ring-2
+          focus:ring-purple-400 focus:border-purple-400 sm:text-sm
+          transition-all duration-200", placeholder="Nhập mật khẩu") }} {% for
+          error in form.password.errors %}
           <p class="text-purple-400 text-xs mt-1">{{ error }}</p>
           {% endfor %}
         </div>
@@ -76,7 +118,8 @@
           <label
             for="{{ form.confirm.id }}"
             class="block text-sm font-bold text-purple-300 drop-shadow mb-1"
-            >Xác nhận mật khẩu</label>
+            >Xác nhận mật khẩu</label
+          >
           <span class="absolute left-3 top-9 text-purple-300">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -93,7 +136,12 @@
               />
             </svg>
           </span>
-          {{ form.confirm(class="mt-1 block w-full pl-10 px-3 py-2 bg-zinc-900 border-2 border-transparent border-gradient-pink-blue rounded-md text-white placeholder-purple-200 focus:outline-none focus:ring-2 focus:ring-purple-300 focus:border-purple-300 sm:text-sm transition-all duration-200", placeholder="Nhập lại mật khẩu") }} {% for error in form.confirm.errors %}
+          {{ form.confirm(class="mt-1 block w-full pl-10 px-3 py-2 bg-zinc-900
+          border-2 border-transparent border-gradient-pink-blue rounded-md
+          text-white placeholder-purple-200 focus:outline-none focus:ring-2
+          focus:ring-purple-300 focus:border-purple-300 sm:text-sm
+          transition-all duration-200", placeholder="Nhập lại mật khẩu") }} {%
+          for error in form.confirm.errors %}
           <p class="text-purple-300 text-xs mt-1">{{ error }}</p>
           {% endfor %}
         </div>
@@ -101,8 +149,13 @@
           <label
             for="{{ form.role.id }}"
             class="block text-sm font-bold text-cyan-300 drop-shadow mb-1"
-            >Vai trò</label>
-          {{ form.role(class="mt-1 block w-full px-3 py-2 bg-zinc-900 border-2 border-transparent border-gradient-pink-blue rounded-md text-white focus:outline-none focus:ring-2 focus:ring-cyan-300 focus:border-cyan-300 sm:text-sm transition-all duration-200") }} {% for error in form.role.errors %}
+            >Vai trò</label
+          >
+          {{ form.role(class="mt-1 block w-full px-3 py-2 bg-zinc-900 border-2
+          border-transparent border-gradient-pink-blue rounded-md text-white
+          focus:outline-none focus:ring-2 focus:ring-cyan-300
+          focus:border-cyan-300 sm:text-sm transition-all duration-200") }} {%
+          for error in form.role.errors %}
           <p class="text-cyan-300 text-xs mt-1">{{ error }}</p>
           {% endfor %}
         </div>
@@ -111,7 +164,10 @@
         <button
           type="submit"
           class="w-full py-2 px-4 bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500 hover:from-pink-600 hover:to-blue-600 text-white font-bold rounded-full shadow-2xl text-base transition-all duration-200 flex items-center justify-center border-2 border-transparent border-gradient-pink-blue"
-          style="box-shadow: 0 4px 24px 0 rgba(236,72,153,0.25), 0 1.5px 6px 0 rgba(59,130,246,0.15);"
+          style="
+            box-shadow: 0 4px 24px 0 rgba(236, 72, 153, 0.25),
+              0 1.5px 6px 0 rgba(59, 130, 246, 0.15);
+          "
         >
           <svg
             class="w-5 h-5 mr-2 text-white drop-shadow"
