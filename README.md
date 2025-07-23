@@ -14,7 +14,7 @@ WebPy là một dự án web được xây dựng bằng Python sử dụng Flas
 - **Google Gemini API**: Tích hợp AI giải thích kiến thức
 
 ## Hướng dẫn cài đặt và chạy dự án
-
+   deactivate
 1. **Cài đặt thư viện:**
    pip install -r requirements.txt
 2. **Khởi tạo database:**
