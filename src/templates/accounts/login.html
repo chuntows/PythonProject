@@ -19,13 +19,10 @@
     {% with messages = get_flashed_messages(with_categories=true) %} {% if
     messages %}
     <div class="mb-6 flex flex-col items-center">
-      {% for category, message in messages %} {% if message != 'Please log in to
-      access this page.' and message != 'Login successful!' and message != 'Đăng
-      nhập thành công!' %} {% set msg_vi = message %} {% if message == 'You have
-      been logged out' or message == 'Bạn đã đăng xuất' %} {% set msg_vi = 'Bạn
-      đã đăng xuất.' %} {% elif message == 'Invalid username or password' or
-      message == 'Tên đăng nhập hoặc mật khẩu không đúng' %} {% set msg_vi =
-      'Tên đăng nhập hoặc mật khẩu không đúng' %} {% endif %}
+      {% for category, message in messages %} {% if message == 'You have been
+      logged out' or message == 'Bạn đã đăng xuất.' or message == 'Invalid
+      username or password' or message == 'Tên đăng nhập hoặc mật khẩu không
+      đúng' %}
       <span
         class="inline-block px-4 py-2 rounded-lg text-sm font-semibold text-center mb-2"
         style="
@@ -35,7 +32,10 @@
                   {% else %}color:#fff;
                   {% endif %}"
       >
-        {{ msg_vi }}
+        {% if message == 'You have been logged out' or message == 'Bạn đã đăng
+        xuất' %} Bạn đã đăng xuất. {% elif message == 'Invalid username or
+        password' or message == 'Tên đăng nhập hoặc mật khẩu không đúng' %} Tên
+        đăng nhập hoặc mật khẩu không đúng {% else %} {{ message }} {% endif %}
       </span>
       {% endif %} {% endfor %}
     </div>

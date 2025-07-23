@@ -1,0 +1,39 @@
+{% extends "base.html" %} {% block title %}Nội dung bài tập{% endblock %} {%
+block content %}
+<div class="max-w-4xl mx-auto px-4 py-10">
+  <div
+    class="bg-gradient-to-br from-zinc-900 via-zinc-800 to-black rounded-2xl shadow-2xl p-10 border-2 border-purple-700"
+  >
+    <h2 class="text-2xl font-bold text-blue-400 mb-4">{{ lesson.title }}</h2>
+    <p class="mb-6 text-white">
+      <span class="font-semibold text-pink-400">Nội dung bài tập:</span> {{
+      lesson.description }}
+    </p>
+    <form method="POST" enctype="multipart/form-data">
+      <div class="mb-4">
+        <label for="code" class="block text-pink-400 font-bold mb-2"
+          >Code của bạn:</label
+        >
+        <textarea
+          id="code"
+          name="code"
+          rows="10"
+          class="w-full p-3 rounded-lg bg-zinc-800 text-white border border-purple-500 focus:border-pink-400"
+        ></textarea>
+      </div>
+      <div class="mb-4">
+        <label for="file" class="block text-pink-400 font-bold mb-2"
+          >Hoặc nộp file:</label
+        >
+        <input type="file" id="file" name="file" class="w-full text-white" />
+      </div>
+      <button
+        type="submit"
+        class="px-6 py-2 rounded-lg bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500 hover:from-pink-600 hover:to-blue-600 text-white font-bold shadow-xl transition-all duration-200"
+      >
+        Nộp bài
+      </button>
+    </form>
+  </div>
+</div>
+{% endblock %}

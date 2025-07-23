@@ -1,5 +1,6 @@
 
 from flask import Blueprint, render_template, redirect, url_for, flash, request
+from werkzeug.utils import secure_filename
 from flask_login import login_required, current_user
 from .models import Lesson
 from .forms import LessonForm
@@ -60,6 +61,27 @@ def delete_lesson(lesson_id):
     db.session.commit()
     flash('Đã xóa bài học.', 'success')
     return redirect(url_for('lessons.index'))
+
+
+# Route xem nội dung bài tập và nộp bài cho sinh viên
+@lessons_bp.route('/lessons/<int:lesson_id>/content', methods=['GET', 'POST'])
+@login_required
+def lesson_content(lesson_id):
+    lesson = Lesson.query.get_or_404(lesson_id)
+    if getattr(current_user, 'role', None) != 'sinhvien':
+        flash('Chỉ sinh viên mới có thể nộp bài.', 'danger')
+        return redirect(url_for('lessons.index'))
+    if request.method == 'POST':
+        code = request.form.get('code')
+        file = request.files.get('file')
+        # TODO: Lưu code hoặc file nộp bài vào database hoặc filesystem
+        # Ví dụ: lưu file
+        if file and file.filename:
+            filename = secure_filename(file.filename)
+            file.save(f'uploads/{filename}')
+        flash('Nộp bài thành công!', 'success')
+        return redirect(url_for('lessons.lesson_content', lesson_id=lesson_id))
+    return render_template('lessons/lesson_content.html', lesson=lesson)
     form = LessonForm()
     if form.validate_on_submit():
         lesson = Lesson(
